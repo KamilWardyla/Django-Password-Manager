@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Login Data{% endblock %}
+{% block content %}
+    {% if login_data %}
+        <p>Name:{{ login_data.data_name }}</p>
+        <p>Login: {{ login_data.login_name }}</p>
+        <p>Email: {{ login_data.email }}</p>
+        <p>Password: {{ login_data.password }}</p>
+        <p>Url: <a href="{{ login_data.url }}"> {{ login_data.url }}</a></p>
+        <p>Group: {{ login_data.login_data_group }}</p>
+        <a href="{% url 'edit_login_data' login_data.id %}"><i class="fa-solid fa-2x fa-file-pen"></i></a>
+        <a href="{% url 'delete_login_data' login_data.id %}"><i class="fa-solid fa-2x fa-trash"></i></a>
+    {% else %}
+        <div>You don't have any Login Data</div>
+    {% endif %}
+{% endblock %}

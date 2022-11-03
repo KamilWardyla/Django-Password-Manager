@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/b732af8930.js" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+          crossorigin="anonymous">
+    <title>{% block title %} {% endblock %}</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}"><i class="fa-solid fa-user-secret"></i></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="{% url "home" %}">Home</a>
+                    <a class="nav-link" href="{% url 'password_generator' %}">Password Generator</a>
+                    <a class="nav-link" href="{% url 'password_check' %}">Password Validator</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Password Manager
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{% url "all_login_data" %}">Login Data</a></li>
+                        <li><a class="dropdown-item" href="{% url "credit_cards" %}">Credit Cards</a></li>
+                        <li><a class="dropdown-item" href="{% url "my_notes" %}">Secret Notes</a></li>
+                        <li><a class="dropdown-item" href="{% url "have_i_been_pwned" %}">Have i been pwned</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav justify-content-end">
+                {% if user.is_authenticated %}
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0"></ul>
+                    <span class="navbar-text">Welcome: {{ user.username }}</span>
+                    <a class="nav-link disable" href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    <a class="nav-link" href="{% url 'register' %}">SignUp</a>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+{% block messages %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                <a class="close" data-dismiss="alert">×</a>
+                {{ message|safe }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
+<div class="container">
+    <h2>{% block head %} {% endblock %}</h2>
+    {% block content %} {% endblock %}
+</div>
+</body>
+</html>

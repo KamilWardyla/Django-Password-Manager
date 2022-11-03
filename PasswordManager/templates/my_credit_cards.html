@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Login Data Form{% endblock %}
+{% block content %}
+    {% if credit_cards|length > 0 %}
+        {% for card in credit_cards %}
+            <div class="card" style="width: 35rem;">
+            <div class="card-body">
+                <div>Card</div>
+                <a href="{% url 'credit_card' card.id %}">{{ card.card_number }}</a>
+                <a href="{% url 'edit_credit_card' card.id %}"><i class="fa-solid fa-1x fa-file-pen"></i></a>
+                <a href="{% url 'delete_credit_card' card.id %}"><i class="fa-solid fa-1x fa-trash"></i></a>
+            </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div>You don't have any credit cards</div>
+    {% endif %}
+    <a href="{% url 'add_credit_card' %}"><i class="fa-solid fa-2x fa-plus"></i>ADD</a>
+{% endblock %}

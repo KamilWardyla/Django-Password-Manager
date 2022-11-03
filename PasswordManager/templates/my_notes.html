@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Login Data Form{% endblock %}
+{% block content %}
+    {% if notes|length > 0 %}
+        {% for note in notes %}
+            <div class="card" style="width: 65rem;">
+                <div class="card-body">
+                    <a href="{% url 'secret_note' note.id %}">{{ note.note_name }}</a>
+                    <a href="{% url 'edit_secret_note' note.id %}"><i class="fa-solid fa-1x fa-file-pen"></i></a>
+                    <a href="{% url 'delete_secret_note' note.id %}"><i class="fa-solid fa-1x fa-trash"></i></a>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div>You don't have any notes</div>
+    {% endif %}
+    <a href="{% url 'secret_note_add' %}"><i class="fa-solid fa-2x fa-plus"></i>ADD</a>
+{% endblock %}

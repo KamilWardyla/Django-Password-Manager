@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Login Data Form{% endblock %}
+{% block content %}
+    {% if credit_card %}
+        <p>Card Number: {{ credit_card.card_number }}</p>
+        <p>Expiration date: {{ credit_card.expiration_date }}</p>
+        <p>Card type: {{ credit_card.card_type }}</p>
+        <p>CVV: {{ credit_card.cvv }}</p>
+        <a href="{% url 'edit_credit_card' credit_card.id %}"><i class="fa-solid fa-2x fa-file-pen"></i></a>
+        <a href="{% url 'delete_credit_card' credit_card.id %}"><i class="fa-solid fa-2x fa-trash"></i></a>
+    {% else %}
+        <div>You don't have any cards</div>
+    {% endif %}
+{% endblock %}

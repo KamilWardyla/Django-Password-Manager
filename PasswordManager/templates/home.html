@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Home Page{% endblock %}
+{% block content %}
+    <h1>Home Page</h1>
+    <div>Welcome</div>
+    <div class="container d-flex justify-content-betweenn"></div>
+    <h1>Pass</h1>
+    <p>xD</p>
+    <a href="{% url 'register' %}" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">GET STARTED</a>
+    <a href="#" class="btn btn-secondary btn-lg" tabindex="-1" role="button" aria-disabled="true">LEARN MORE</a>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <i class="fa-sharp fa-solid fa-2x fa-user"></i>
+                <p>Heheszki</p>
+            </div>
+            <div class="col text-center">
+                <i class="fa-sharp fa-solid fa-2x fa-check"></i>
+                <p>Heheszki2</p>
+            </div>
+            <div class="col text-center">
+                <i class="fa-sharp fa-solid fa-2x fa-shield-halved"></i>
+                Column
+            </div>
+        </div>
+    </div>
+{% endblock %}

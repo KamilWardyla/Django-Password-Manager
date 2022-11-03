@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}All support cases{% endblock %}
+{% block content %}
+    {% if all_support_cases|length > 0 %}
+        {% for case in all_support_cases %}
+            <div class="card" style="width: 65rem;">
+                <div class="card-body">
+                    <a href="{% url 'support_case' case.id%}">{{ case.topic }}</a>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div>You don't have any cases</div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html'%}
+{% block title%}Login Data Form{% endblock %}
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ support_contact_form }}
+    <button type="submit">Wyślij</button>
+</form>
+{% endblock %}

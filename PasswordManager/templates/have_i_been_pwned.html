@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Have I Been Pwned{% endblock %}
+{% block content %}
+    {% if pwned_list|length > 0 %}
+        {% for pwned in pwned_list %}
+            <li>{{ pwned }}</li>
+        {% endfor %}
+    {% else %}
+        <p>Not login data to check</p>
+    {% endif %}
+{% endblock %}
