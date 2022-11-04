@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Delete Login Data {% endblock %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <div>Do you want to delete support case: {{ support_case.topic }}</div>
+        <button type="submit">Delete</button>
+    </form>
+{% endblock %}

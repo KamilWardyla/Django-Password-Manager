@@ -1,28 +1,43 @@
 {% extends 'base.html' %}
 {% block title %}Home Page{% endblock %}
 {% block content %}
-    <h1>Home Page</h1>
-    <div>Welcome</div>
     <div class="container d-flex justify-content-betweenn"></div>
-    <h1>Pass</h1>
-    <p>xD</p>
-    <a href="{% url 'register' %}" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">GET STARTED</a>
-    <a href="#" class="btn btn-secondary btn-lg" tabindex="-1" role="button" aria-disabled="true">LEARN MORE</a>
+    <h1>Password Manager</h1>
+    <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+        "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is
+        pain..."</p>
+    <a href="{% url 'register' %}" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">GET
+        STARTED</a>
+    <a href="{% url 'about_us' %}" class="btn btn-secondary btn-lg" tabindex="-1" role="button" aria-disabled="true">LEARN
+        MORE</a>
     <br>
     <br>
     <div class="container">
         <div class="row">
             <div class="col text-center">
                 <i class="fa-sharp fa-solid fa-2x fa-user"></i>
-                <p>Heheszki</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac sapien commodo, molestie arcu
+                    vehicula, porttitor velit. Maecenas id sapien at ligula vestibulum egestas sollicitudin in orci.
+                    Maecenas elementum ac arcu at suscipit. Quisque aliquam placerat sapien quis fringilla. Aenean risus
+                    eros, vehicula vitae accumsan id, maximus eu nibh. Vivamus ultricies sit amet ipsum vitae placerat.
+                    Donec placerat semper venenatis. Pellentesque ornare quam vitae sapien pharetra suscipit.
+                </p>
             </div>
             <div class="col text-center">
                 <i class="fa-sharp fa-solid fa-2x fa-check"></i>
-                <p>Heheszki2</p>
+                <p>Nam ullamcorper arcu vel molestie suscipit. Quisque auctor metus consectetur lectus pretium, nec
+                    lobortis ipsum hendrerit. Vivamus eget efficitur dui. Integer ultricies sollicitudin dolor, semper
+                    molestie lacus bibendum vel. Maecenas eu tempus tortor. Pellentesque vitae nunc vel enim lacinia
+                    gravida a ac sem. Fusce dictum tincidunt ante ac mollis. Ut ultrices nunc eu mi venenatis maximus.
+                    Donec imperdiet tristique enim, a viverra mi tincidunt eu. Aenean accumsan semper consectetur..</p>
             </div>
             <div class="col text-center">
                 <i class="fa-sharp fa-solid fa-2x fa-shield-halved"></i>
-                Column
+                <p>Phasellus a risus eu diam eleifend bibendum. Ut tincidunt dui ipsum, sit amet blandit turpis feugiat
+                    ac. Curabitur vitae lacus in enim pellentesque fermentum. Cras egestas, risus non dapibus fringilla,
+                    nunc risus luctus risus, eget scelerisque sapien lectus quis lorem. Nulla mollis massa augue, eu
+                    laoreet tortor commodo nec. Phasellus pharetra nibh at dui malesuada, ac dignissim est blandit. In
+                    est lectus, dignissim non mattis id, feugiat ac quam.</p>
             </div>
         </div>
     </div>

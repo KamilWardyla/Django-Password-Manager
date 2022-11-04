@@ -82,9 +82,12 @@ class CreditCard(models.Model):
 
 class SupportContact(models.Model):
     topic = models.CharField(max_length=128)
-    sender_name = models.CharField(max_length=32)
-    message_text = models.TextField(null=False)
+    sender_email = models.EmailField(blank=False)
+    message_text = models.TextField(blank=False)
     creation_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.topic
+
+    class Meta:
+        ordering = ['creation_date']

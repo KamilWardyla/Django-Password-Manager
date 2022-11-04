@@ -6,6 +6,7 @@
             <div class="card" style="width: 65rem;">
                 <div class="card-body">
                     <a href="{% url 'support_case' case.id%}">{{ case.topic }}</a>
+                    <a href="{% url 'delete_support_case' case.id %}"><i class="fa-solid fa-2x fa-trash"></i></a></a>
                 </div>
             </div>
         {% endfor %}

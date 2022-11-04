@@ -5,7 +5,7 @@ from .forms import LoginDataForm, SecretNoteForm, SupportContactForm, \
     PasswordGeneratorForm, CreateUserForm, CreditCardForm, PasswordCheckForm
 from django.contrib import messages
 from django.contrib.auth import login
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from PasswordManager.PasswordHelper.password_generator import PasswordGenerator
 from PasswordManager.PasswordHelper.password_check import PasswordValidator
@@ -97,6 +97,8 @@ class LoginDataEditView(LoginRequiredMixin, View):
 
     def post(self, request, id):
         login_data = get_object_or_404(LoginData, id=id)
+        if login_data.user != request.user:
+            raise PermissionDenied()
         form = LoginDataForm(request.POST, instance=login_data)
         ctx = {"form": form}
         if form.is_valid():
@@ -108,6 +110,8 @@ class LoginDataEditView(LoginRequiredMixin, View):
 class LoginDataDeleteView(LoginRequiredMixin, View):
     def get(self, request, id):
         login_data = get_object_or_404(LoginData, id=id)
+        if login_data.user != request.user:
+            raise PermissionDenied()
         ctx = {"login_data": login_data}
         return render(request, "delete_login_data.html", ctx)
 
@@ -309,8 +313,13 @@ class SupportContactView(View):
 """Wszystkie zgłoszenia"""
 
 
-class SupportCases(PermissionRequiredMixin, View):
-    permission_required = 'is_staff'
+class StaffRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
+
+    def test_func(self):
+        return self.request.user.is_staff
+
+
+class SupportCases(StaffRequiredMixin, View):
 
     def get(self, request):
         all_support_cases = SupportContact.objects.all()
@@ -318,16 +327,28 @@ class SupportCases(PermissionRequiredMixin, View):
         return render(request, "support_cases.html", ctx)
 
 
-"""Pojedyńcze zgłoszenie"""
+"""Pojedyncze zgłoszenie"""
 
 
-class SupportCase(PermissionRequiredMixin, View):
-    permission_required = "is_staff"
+class SupportCase(StaffRequiredMixin, View):
 
     def get(self, request, id):
         case = get_object_or_404(SupportContact, id=id)
         ctx = {"case": case}
         return render(request, "support_case.html", ctx)
+
+
+class SupportCaseDelete(StaffRequiredMixin, View):
+
+    def get(self, request, id):
+        case = get_object_or_404(SupportContact, id=id)
+        ctx = {"case": case}
+        return render(request, "delete_support_case.html", ctx)
+
+    def post(self, request, id):
+        case = get_object_or_404(SupportContact, id=id)
+        case.delete()
+        return redirect('support_cases')
 
 
 class PasswordGeneratorView(View, PasswordGenerator):
@@ -384,3 +405,9 @@ class HaveIBeenPwnedView(LoginRequiredMixin, View, HaveIBeenPwned):
             pwned_email = HaveIBeenPwned(email)
             pwned_list.append(f"Your mail address: {email} {pwned_email.get_pwned_info()}")
         return render(request, "have_i_been_pwned.html", ctx)
+
+
+class AboutUs(View):
+
+    def get(self, request):
+        return render(request, "about_us.html")

@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
-{% block title %}Case{% endblock %}
+{% block title %}Case {{ case.id }}{% endblock %}
 {% block content %}
-    <p>{{ case.topic }}</p>
-    <p>{{ case.message_text }}</p>
+    <p>Topic: {{ case.topic }}</p>
+    <p>Creation date: {{ case.creation_date }}</p>
+    <p>Email: {{ case.sender_email }}</p>
+    <p>Message: {{ case.message_text }}</p>
+    <a href="{% url 'delete_support_case' case.id %}"><i class="fa-solid fa-2x fa-trash"></i></a></a>
 {% endblock %}

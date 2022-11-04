@@ -1,9 +1,10 @@
 {% extends 'base.html'%}
+{% load bootstrap %}
 {% block title%}Login Data Form{% endblock %}
 {% block content %}
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ support_contact_form }}
+    {{ support_contact_form|bootstrap }}
     <button type="submit">Wyślij</button>
 </form>
 {% endblock %}

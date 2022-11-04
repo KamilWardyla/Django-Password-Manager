@@ -4,7 +4,7 @@ from password_manager_app.views import LoginDataAdd, SecretNoteAddView, SupportC
     PasswordGeneratorView, HomeView, UserRegister, SecretNotesView, SecretNoteView, SecretNoteEditView, \
     DeleteSecretNote, AddCreditCard, CreditCardView, CreditCardsView, CreditCardEdit, DeleteCreditCard, \
     LoginDataView, LoginAllDataView, PasswordCheckView, LoginDataEditView, LoginDataDeleteView, HaveIBeenPwnedView, \
-    SupportCases, SupportCase
+    SupportCases, SupportCase, SupportCaseDelete, AboutUs
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,12 +24,14 @@ urlpatterns = [
     path('edit_credit_card/<int:id>', CreditCardEdit.as_view(), name="edit_credit_card"),
     path('delete_credit_card/<int:id>', DeleteCreditCard.as_view(), name="delete_credit_card"),
     path('add_login_data/', LoginDataAdd.as_view(), name="add_login_data"),
-    path('login_data/<int:id>/', LoginDataView.as_view(), name="login_data"),
+    path('login_data/<int:id>', LoginDataView.as_view(), name="login_data"),
     path('all_login_data/', LoginAllDataView.as_view(), name="all_login_data"),
     path('password_check', PasswordCheckView.as_view(), name="password_check"),
     path('edit_login_data/<int:id>', LoginDataEditView.as_view(), name="edit_login_data"),
     path('delete_login_data/<int:id>', LoginDataDeleteView.as_view(), name="delete_login_data"),
     path('have_i_been_pwned/', HaveIBeenPwnedView.as_view(), name="have_i_been_pwned"),
     path('support_cases/', SupportCases.as_view(), name="support_cases"),
-    path('support_case/<int:id>', SupportCase.as_view(), name="support_case")
+    path('support_case/<int:id>', SupportCase.as_view(), name="support_case"),
+    path('delete_support_case/<int:id>', SupportCaseDelete.as_view(), name="delete_support_case"),
+    path('about_us', AboutUs.as_view(), name="about_us")
 ]
