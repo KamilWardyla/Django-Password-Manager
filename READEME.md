@@ -1,4 +1,4 @@
-Setup
+**Setup**
 
 The first thing you need to do is clone the repository:
 
@@ -10,7 +10,7 @@ Next step you need to do is create a virtual environment:
 
 Next step you need to do is activate virtual environment:
 
-`$ source env/bin/activate`
+`$ source venv/bin/activate`
 
 Then you need to install the dependencies:
 
@@ -49,6 +49,7 @@ EMAIL_HOST_USER = "EMAIL_HOST_USER"
 EMAIL_HOST_PASSWORD = "EMAIL_HOST_PASSWORD"
 ```
 
-To
+To run the application server:
+`(venv)$ python manage.py runserver`
 
 
