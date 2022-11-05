@@ -52,9 +52,6 @@ def test_update_login_data(login_data, client, user_1):
     assert response.status_code == 200
 
 
-"""RESPONSE STATUS CODE SHOULD BE 302 BECAUSE NOT AUTH USER SHOULD BE REDIRECT TO THE LOGIN PAGE"""
-
-
 def test_update_login_data_user_not_auth(login_data, client, user_1):
     response = client.get(reverse('edit_login_data', kwargs={"id": login_data.id}))
     assert response.status_code == 302
