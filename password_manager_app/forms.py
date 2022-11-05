@@ -53,7 +53,7 @@ class CreditCardForm(ModelForm):
         today = date.today()
         if value < today:
             raise ValidationError(
-                "Stara data"
+                "Date cannot be older than today's date"
             )
 
     card_number = forms.CharField(validators=[card_number_validator])

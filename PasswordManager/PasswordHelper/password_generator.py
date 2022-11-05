@@ -2,6 +2,7 @@ import random
 
 
 class PasswordGenerator:
+    """This class is for generating password."""
     UPPER_CASE_LETTER = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
                          'S', 'T', 'U', 'V', 'W', 'X', 'Y']
     LOWER_CASE_LETTER = list(map(lambda letter: letter.lower(), UPPER_CASE_LETTER))

@@ -152,19 +152,19 @@ LOGIN_URL = 'login'
 try:
     from PasswordManager.localsettings import DATABASES
 except ModuleNotFoundError:
-    print("Brak konfiguracji bazy danych w pliku local_settings.py!")
-    print("Uzupełnij dane i spróbuj ponownie!")
+    print("No database configuration in localsettings.py!")
+    print("Complete the data and try again")
     exit(0)
 
 try:
     from PasswordManager.localsettings import FIELD_ENCRYPTION_KEY
 except ModuleNotFoundError:
-    print("Brak modułu FIELD_ENCRYPTION_KEY")
+    print("No module FIELD_ENCRYPTION_KEY in localsettings.py")
     exit(0)
 
 try:
     from PasswordManager.localsettings import EMAIL_BACKEND, EMAIL_HOST, EMAIL_PORT, EMAIL_USE_TLS, EMAIL_HOST_USER, \
         EMAIL_HOST_PASSWORD
 except ModuleNotFoundError:
-    print("Brak modułu email")
+    print("No module email in localsettings.py")
     exit(0)

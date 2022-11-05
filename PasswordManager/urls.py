@@ -7,6 +7,7 @@ from password_manager_app.views import LoginDataAdd, SecretNoteAddView, SupportC
     SupportCases, SupportCase, SupportCaseDelete, AboutUs
 
 urlpatterns = [
+    path('', HomeView.as_view(), name="home"),
     path('admin/', admin.site.urls),
     path('support_contact/', SupportContactView.as_view(), name="support_contact"),
     path('password_generator/', PasswordGeneratorView.as_view(), name="password_generator"),

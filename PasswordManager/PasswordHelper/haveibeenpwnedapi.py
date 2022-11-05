@@ -2,6 +2,7 @@ import requests
 
 
 class HaveIBeenPwned:
+    """This class is for check your email has been pwned."""
     def __init__(self, email):
         self.email = email
 

@@ -3,6 +3,8 @@ import hashlib
 
 
 class PasswordValidator:
+    """This class is for check your password safe."""
+
     def __init__(self, password):
         self.__password = password
         self.__upper_case_letter = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
@@ -30,8 +32,8 @@ class PasswordValidator:
                 and any(sign for sign in self.__password if sign in self.__digits)
                 and any(sign for sign in self.__password if sign in self.__symbols)
         ):
-            return f"You password is strong"
-        return f"You password is too weak"
+            return f"The strength of your password is good"
+        return f"The strength of your password is bad"
 
     def password_seen_in_data_branch(self):
         password = hashlib.sha1()
@@ -52,7 +54,7 @@ class PasswordValidator:
                     if hex in pwd:
                         index = pwd.index(":")
                         how_many_times = pwd[index + 1:]
-                        return f"This password has been seen {int(how_many_times)} times before"
+                        return f"This password has been seen {int(how_many_times)} times before, This password has previously appeared in a data breach and should never be used. If you've ever used it anywhere before, change it!"
             else:
                 return "no pwnage found!"
 

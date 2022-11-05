@@ -5,6 +5,6 @@
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ support_contact_form|bootstrap }}
-    <button type="submit">Wyślij</button>
+    <button type="submit">Send<i class="fa-solid fa-paper-plane-top"></i></button>
 </form>
 {% endblock %}

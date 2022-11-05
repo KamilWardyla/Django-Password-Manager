@@ -21,9 +21,12 @@ Then you need to create file localsettings.py in PasswordManager folder as one t
 ![img_1.png](img_1.png)
 
 In the fallowing file must contain local settings such as:
+
 *Your connection to the database
+
 *Your encryption key - How to generate
 key: [https://composed.blog/airflow/fernet-key](https://composed.blog/airflow/fernet-key)
+
 *Your django core email backend configuration - How to configurate gmail as django core
 email: [https://dev.to/abderrahmanemustapha/how-to-send-email-with-django-and-gmail-in-production-the-right-way-24ab](https://dev.to/abderrahmanemustapha/how-to-send-email-with-django-and-gmail-in-production-the-right-way-24ab)
 
@@ -50,6 +53,12 @@ EMAIL_HOST_PASSWORD = "EMAIL_HOST_PASSWORD"
 ```
 
 To run the application server:
+
+`(venv)$ python manage.py makemigrations`
+
+`(venv)$ python manage.py migrate`
+
 `(venv)$ python manage.py runserver`
+
 
 

@@ -87,8 +87,3 @@ class MyUserAttributeSimilarityValidator(UserAttributeSimilarityValidator):
         if max_similarity < 0.1:
             raise ValueError("max_similarity must be at least 0.1")
         self.max_similarity = max_similarity
-
-
-if __name__ == "__main__":
-    a = MyUserAttributeSimilarityValidator()
-    a.validate("123vfsasda")
